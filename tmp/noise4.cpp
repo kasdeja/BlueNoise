@@ -7,6 +7,9 @@ int main(int argc, char **argv)
     constexpr int size = 256;
     constexpr int sizeHalf = size / 2;
     constexpr int sizeMask = size - 1;
+    constexpr int boxBlurSize = 8;
+    constexpr int boxBlurSizeHalf = boxBlurSize / 2;
+    constexpr float boxBlurNorm = 1.0f / boxBlurSize;
 
     int nPixels = size * size;
 
@@ -40,7 +43,7 @@ int main(int argc, char **argv)
             double yy = y - sizeHalf;
             double d  = sqrt(xx * xx + yy * yy);
 
-            falloff[y * size + x] = exp(-d * 0.2);
+            falloff[y * size + x] = exp(-d * 0.1);
         }
     }
 
@@ -86,23 +89,48 @@ int main(int argc, char **argv)
         dotsBitmap[idx] = true;
     }
 
+
+    // Normalize and save
+    // float *img = dots;
+    // float pMax = 0.0f;
+    //
+    // for(int n = 0; n < nPixels; n++)
+    // {
+    //     if (img[n] > pMax)
+    //         pMax = img[n];
+    // }
+    //
+    // float gain = 255.0f / pMax;
+
+    int black = 0;
+    int white = 0;
+
     for(int n = 0; n < nPixels; n++)
     {
-        //float v = pow(dots[n] / 65535.0f, 1.0 / 2.2);
-        //data[n] = v * 255.0f;
-        data[n] = dots[n] >> 8;
+        // data[n] = floor(img[n] * gain);
+        float v = pow(dots[n] / 65535.0f, 1.0 / 2.2);
+        //float v = dots[n] / 65535.0f;
+
+        // if (v < 0.5)
+        // {
+        //     data[n] = 255;
+        //     white++;
+        // }
+        // else
+        // {
+        //     data[n] = 0;
+        //     black++;
+        // }
+        data[n] = v * 255.0f;
     }
+
+    printf("white %d black %d\n", white, black);
 
     FILE *file = ::fopen("test4.pgm", "wb");
 
     fprintf(file, "P5\n%d %d\n%d\n", size, size, 255);
     fwrite(data, 1, size * size, file);
     fclose(file);
-
-    FILE *file2 = ::fopen("test4.bin", "wb");
-
-    fwrite(dots, sizeof(int), size * size, file2);
-    fclose(file2);
 
     return 0;
 }
