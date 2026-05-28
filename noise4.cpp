@@ -40,7 +40,7 @@ int main(int argc, char **argv)
             double yy = y - sizeHalf;
             double d  = sqrt(xx * xx + yy * yy);
 
-            falloff[y * size + x] = exp(-d * 0.2);
+            falloff[y * size + x] = exp(-d * 0.1);
         }
     }
 
