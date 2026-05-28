@@ -18,15 +18,15 @@ int main(int argc, char **argv)
 
     FILE *file;
 
-    file = ::fopen("test4a.bin", "rb");
+    file = ::fopen("test5a.bin", "rb");
     fread(blueNoise1, sizeof(int), size * size, file);
     fclose(file);
 
-    file = ::fopen("test4b.bin", "rb");
+    file = ::fopen("test5b.bin", "rb");
     fread(blueNoise2, sizeof(int), size * size, file);
     fclose(file);
 
-    file = ::fopen("test4c.bin", "rb");
+    file = ::fopen("test5c.bin", "rb");
     fread(blueNoise3, sizeof(int), size * size, file);
     fclose(file);
 
