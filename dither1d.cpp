@@ -90,7 +90,7 @@ int main(int argc, char **argv)
         drawPlainRect(10 + n, 310, 1, 120, v / 8.0f, v / 16.0f, v / 32.0f);
         drawDither2Rect(10 + n, 430, 1, 120, v / 8.0f, v / 16.0f, v / 32.0f);
 
-        drawPlainRect(10 + n, 570, 1, 120, v / 2.0f, n / 4.0f, n / 8.0f);
+        drawPlainRect(10 + n, 570, 1, 120, v / 2.0f, n / 4.0f, n / 8.0f); // 127.5 , 250.75 , 125.375
         drawDither2Rect(10 + n, 690, 1, 120, v / 2.0f, n / 4.0f, n / 8.0f);
 
         drawPlainRect(10 + n, 860, 1, 120, v / 8.0f, n / 16.0f, n / 32.0f);

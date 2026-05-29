@@ -8,7 +8,7 @@ int main(int argc, char **argv)
     constexpr int sizeMask = size - 1;
 
     constexpr int width = 1024;
-    constexpr int height = 1024;
+    constexpr int height = 1200;
     constexpr int nPixels = width * height;
 
     int *blueNoise = new int[size * size];
@@ -85,6 +85,12 @@ int main(int argc, char **argv)
 
         drawPlainRect(10 + 60 * n, 310, 60, 120, n * 2, n, n / 2);
         drawDither2Rect(10 + 60 * n, 430, 60, 120, n * 2, n, n / 2);
+
+        drawPlainRect(10 + 60 * n, 570, 60, 120, v / 2.0f, v * 0.9833f, v * 0.4917f); // 127.5 , 250.75 , 125.375
+        drawDither2Rect(10 + 60 * n, 690, 60, 120, v / 2.0f, v * 0.9833f, v * 0.4917f);
+
+        drawPlainRect(10 + 60 * n, 860, 60, 120, v / 8.0f, v * 0.2458f, v * 0.1229);
+        drawDither2Rect(10 + 60 * n, 980, 60, 120, v / 8.0f, v * 0.2458f, v * 0.1229);
     }
 
     FILE *file2 = ::fopen("image1c.ppm", "wb");

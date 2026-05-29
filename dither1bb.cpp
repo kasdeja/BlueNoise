@@ -7,8 +7,8 @@ int main(int argc, char **argv)
     constexpr int size = 256;
     constexpr int sizeMask = size - 1;
 
-    constexpr int width = 1024;
-    constexpr int height = 1200;
+    constexpr int width = 1024 * 4;
+    constexpr int height = 1200 * 4;
     constexpr int nPixels = width * height;
 
     int *blueNoise = new int[size * size];
@@ -51,9 +51,9 @@ int main(int argc, char **argv)
                 return pow((v + 0.055) / 1.055, 2.4);
         };
 
-        //int thR = pow(r / 255.0, 2.2) * 65535;
-        //int thG = pow(g / 255.0, 2.2) * 65535;
-        //int thB = pow(b / 255.0, 2.2) * 65535;
+        // int thR = pow(r / 255.0, 2.2) * 65535;
+        // int thG = pow(g / 255.0, 2.2) * 65535;
+        // int thB = pow(b / 255.0, 2.2) * 65535;
 
         int thR = srgb(r / 255.0) * 65535;
         int thG = srgb(g / 255.0) * 65535;
@@ -78,20 +78,20 @@ int main(int argc, char **argv)
     {
         int v = (n * 255) / 15;
         printf("v %d\n", v);
-        drawPlainRect(10 + 60 * n, 10, 60, 120, v, v / 2, v / 4);
-        drawDither2Rect(10 + 60 * n, 130, 60, 120, v, v / 2, v / 4);
+        drawPlainRect(40 + 240 * n, 4 * 10, 240, 480, v, v / 2, v / 4);
+        drawDither2Rect(40 + 240 * n, 4 * 130, 240, 480, v, v / 2, v / 4);
 
-        drawPlainRect(10 + 60 * n, 310, 60, 120, n * 2, n, n / 2);
-        drawDither2Rect(10 + 60 * n, 430, 60, 120, n * 2, n, n / 2);
+        drawPlainRect(40 + 240 * n, 4 * 310, 240, 480, n * 2, n, n / 2);
+        drawDither2Rect(40 + 240 * n, 4 * 430, 240, 480, n * 2, n, n / 2);
 
-        drawPlainRect(10 + 60 * n, 570, 60, 120, v / 2.0f, v * 0.9833f, v * 0.4917f); // 127.5 , 250.75 , 125.375
-        drawDither2Rect(10 + 60 * n, 690, 60, 120, v / 2.0f, v * 0.9833f, v * 0.4917f);
+        drawPlainRect(40 + 240 * n, 4 * 570, 240, 480, v / 2.0f, v * 0.9833f, v * 0.4917f); // 127.5 , 250.75 , 125.375
+        drawDither2Rect(40 + 240 * n, 4 * 690, 240, 480, v / 2.0f, v * 0.9833f, v * 0.4917f);
 
-        drawPlainRect(10 + 60 * n, 860, 60, 120, v / 8.0f, v * 0.2458f, v * 0.1229);
-        drawDither2Rect(10 + 60 * n, 980, 60, 120, v / 8.0f, v * 0.2458f, v * 0.1229);
+        drawPlainRect(40 + 240 * n, 4 * 860, 240, 480, v / 8.0f, v * 0.2458f, v * 0.1229);
+        drawDither2Rect(40 + 240 * n, 4 * 980, 240, 480, v / 8.0f, v * 0.2458f, v * 0.1229);
     }
 
-    FILE *file2 = ::fopen("image1b.ppm", "wb");
+    FILE *file2 = ::fopen("image1bb.ppm", "wb");
 
     fprintf(file2, "P6\n%d %d\n%d\n", width, height, 255);
     fwrite(image, 1, width * height * 3, file2);
