@@ -93,13 +93,13 @@ int main(int argc, char **argv)
         data[n] = dots[n] >> 8;
     }
 
-    FILE *file = ::fopen("test4.pgm", "wb");
+    FILE *file = ::fopen("noise4.pgm", "wb");
 
     fprintf(file, "P5\n%d %d\n%d\n", size, size, 255);
     fwrite(data, 1, size * size, file);
     fclose(file);
 
-    FILE *file2 = ::fopen("test4.bin", "wb");
+    FILE *file2 = ::fopen("noise4.bin", "wb");
 
     fwrite(dots, sizeof(int), size * size, file2);
     fclose(file2);

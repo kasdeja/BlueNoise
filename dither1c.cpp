@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     int *blueNoise = new int[size * size];
     unsigned char *image = new unsigned char[nPixels * 3];
 
-    FILE *file = ::fopen("test4.bin", "rb");
+    FILE *file = ::fopen("noise4.bin", "rb");
     fread(blueNoise, sizeof(int), size * size, file);
     fclose(file);
 

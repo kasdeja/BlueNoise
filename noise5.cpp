@@ -92,14 +92,14 @@ int main(int argc, char **argv)
 
         char fname[32];
 
-        sprintf(fname, "test5%c.pgm", idx + 'a');
+        sprintf(fname, "noise5%c.pgm", idx + 'a');
         FILE *file = ::fopen(fname, "wb");
 
         fprintf(file, "P5\n%d %d\n%d\n", size, size, 255);
         fwrite(data, 1, size * size, file);
         fclose(file);
 
-        sprintf(fname, "test5%c.bin", idx + 'a');
+        sprintf(fname, "noise5%c.bin", idx + 'a');
         FILE *file2 = ::fopen(fname, "wb");
 
         fwrite(dots, sizeof(int), size * size, file2);
